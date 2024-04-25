@@ -1,6 +1,6 @@
 # --- SUDOKU-SOLVER GUI ---
 import pygame
-from solver import board, solve
+from solver import board, solve, valid_solution
 
 pygame.init()
 
@@ -50,7 +50,6 @@ def render_board(screen, board):
     pygame.display.update()
 
 run = True
-solved = True 
 
 while run:
 
@@ -65,7 +64,7 @@ while run:
             if selected_cell and event.key in range(pygame.K_1, pygame.K_9+1):
                 digit = event.key - pygame.K_0
                 row, col = selected_cell
-                if board[row][col] == 0:
+                if board[row][col] == 0 and valid_solution(board, row, col, digit):
                     board[row][col] = digit
                     selected_cell = None
 
