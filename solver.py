@@ -54,6 +54,3 @@ def solve(board):
                         board[row][col] = 0 # Backtrack 
                 return False    # There are no possible values -> backtrack for different value
     return True
-
-solve(board)
-print(board)
